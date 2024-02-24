@@ -12,23 +12,24 @@ import javax.vecmath.Vector3d;
  * @author yahirsd
  */
 public class Transform3DBuilder {
+
     final private Transform3D transform3D = new Transform3D();
 
-    public Transform3DBuilder movX(double x){
+    public Transform3DBuilder movX(double x) {
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(x, 0, 0));
         transform3D.mul(tmp);
         return this;
     }
 
-    public Transform3DBuilder movY(double y){
+    public Transform3DBuilder movY(double y) {
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(0, y, 0));
         transform3D.mul(tmp);
         return this;
     }
 
-    public Transform3DBuilder movZ(double z){
+    public Transform3DBuilder movZ(double z) {
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(0, 0, z));
         transform3D.mul(tmp);
