@@ -5,20 +5,11 @@
 package com.yahirsd.conejo.models;
 
 import com.sun.j3d.utils.geometry.Box;
-import com.sun.j3d.utils.geometry.Primitive;
-import com.sun.j3d.utils.image.TextureLoader;
 import com.yahirsd.conejo.utils.AppearanceTexture;
 import com.yahirsd.conejo.utils.Transform3DBuilder;
-import java.awt.Color;
-import java.awt.Container;
-import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
-import javax.media.j3d.ColoringAttributes;
-import javax.media.j3d.Texture;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
-import javax.vecmath.Color3f;
-import javax.vecmath.Vector3d;
 
 /**
  *
