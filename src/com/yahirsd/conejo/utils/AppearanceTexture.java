@@ -9,7 +9,6 @@ import com.sun.j3d.utils.image.TextureLoader;
 import java.awt.Container;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Texture;
-import javax.media.j3d.TransformGroup;
 
 /**
  *
