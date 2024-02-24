@@ -12,7 +12,7 @@ import javax.vecmath.Vector3d;
  * @author yahirsd
  */
 public class Transform3DBuilder {
-    private Transform3D transform3D = new Transform3D();
+    final private Transform3D transform3D = new Transform3D();
     
     public Transform3DBuilder movX(double x){
         Transform3D tmp = new Transform3D();
