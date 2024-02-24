@@ -166,6 +166,12 @@ public class Transform3DBuilder {
         return this;
     }
 
+    /**
+     * Retorna el transform3D global con todas las transformaciones que se le
+     * agregaron.
+     *
+     * @return <code>transform3D</code>
+     */
     public Transform3D getTransform3D() {
         return transform3D;
     }
