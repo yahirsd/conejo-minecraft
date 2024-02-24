@@ -13,21 +13,21 @@ import javax.vecmath.Vector3d;
  */
 public class Transform3DBuilder {
     final private Transform3D transform3D = new Transform3D();
-    
+
     public Transform3DBuilder movX(double x){
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(x, 0, 0));
         transform3D.mul(tmp);
         return this;
     }
-    
+
     public Transform3DBuilder movY(double y){
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(0, y, 0));
         transform3D.mul(tmp);
         return this;
     }
-    
+
     public Transform3DBuilder movZ(double z){
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(0, 0, z));
@@ -35,8 +35,83 @@ public class Transform3DBuilder {
         return this;
     }
 
+    /**
+     * Agrega la rotacion en el eje X los grados que se indiquen al transform3D.
+     * La rotacion se pasa en grados, rotX de Trasnform3D requiere los grados en
+     * radianes asi que internamente se hace una conversion.
+     *
+     * Ejecuta el metodo mul del opjeto Transform3D global pasando como
+     * parametro un Transform3D temporal.
+     *
+     * <code>
+     *  final Transform3D tmp = new Transform3D();
+     *  tmp.rotX(Math.toRadians(x));
+     *  transform3D.mul(tmp);
+     * </code>
+     *
+     * @param x grados para rotar en el eje x.
+     * @return una instancia del mismo objeto Transform3DBuilder
+     * <code>this</code>
+     */
+    public Transform3DBuilder rotX(double x) {
+        final Transform3D tmp = new Transform3D();
+        tmp.rotX(Math.toRadians(x));
+        transform3D.mul(tmp);
+        return this;
+    }
+
+    /**
+     * Agrega la rotacion en el eje Y los grados que se indiquen al transform3D.
+     * La rotacion se pasa en grados, rotY de Trasnform3D requiere los grados en
+     * radianes asi que internamente se hace una conversion.
+     *
+     * Ejecuta el metodo mul del opjeto Transform3D global pasando como
+     * parametro un Transform3D temporal.
+     *
+     * <code>
+     *  final Transform3D tmp = new Transform3D();
+     *  tmp.rotY(Math.toRadians(y));
+     *  transform3D.mul(tmp);
+     * </code>
+     *
+     * @param y grados para rotar en el eje y.
+     * @return una instancia del mismo objeto Transform3DBuilder
+     * <code>this</code>
+     */
+    public Transform3DBuilder rotY(double y) {
+        final Transform3D tmp = new Transform3D();
+        tmp.rotY(Math.toRadians(y));
+        transform3D.mul(tmp);
+        return this;
+    }
+
+    /**
+     * Agrega la rotacion en el eje Z los grados que se indiquen al transform3D.
+     * La rotacion se pasa en grados, rotZ de Trasnform3D requiere los grados en
+     * radianes asi que internamente se hace una conversion.
+     *
+     * Ejecuta el metodo mul del opjeto Transform3D global pasando como
+     * parametro un Transform3D temporal.
+     *
+     * <code>
+     *  final Transform3D tmp = new Transform3D();
+     *  tmp.rotZ(Math.toRadians(z));
+     *  transform3D.mul(tmp);
+     * </code>
+     *
+     * @param z grados para rotar en el eje z.
+     * @return una instancia del mismo objeto Transform3DBuilder
+     * <code>this</code>
+     */
+    public Transform3DBuilder rotZ(double z) {
+        final Transform3D tmp = new Transform3D();
+        tmp.rotZ(Math.toRadians(z));
+        transform3D.mul(tmp);
+        return this;
+    }
+
     public Transform3D getTransform3D() {
         return transform3D;
     }
-    
+
 }
