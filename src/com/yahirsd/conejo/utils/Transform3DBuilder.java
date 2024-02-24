@@ -13,8 +13,29 @@ import javax.vecmath.Vector3d;
  */
 public class Transform3DBuilder {
 
+    /**
+     * Transform3D global.
+     */
     final private Transform3D transform3D = new Transform3D();
 
+    /**
+     * Agrega la translacion en el eje X en metros al transform3D global.
+     *
+     * Ejecuta el metodo mul del objeto Transform3D global pasando como
+     * parametro un Transform3D temporal.
+     *
+     * <code>
+     *  Transform3D tmp = new Transform3D();
+     *  tmp.setTranslation(new Vector3d(x, 0, 0));
+     *  transform3D.mul(tmp);
+     *  return this;
+     * </code>
+     *
+     * @param x metros translacion en el eje x en metros. Accepta valores
+     * engativos.
+     *
+     * @return <code>this</code> instancia del mismo objeto Transform3DBuilder.
+     */
     public Transform3DBuilder movX(double x) {
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(x, 0, 0));
@@ -22,6 +43,23 @@ public class Transform3DBuilder {
         return this;
     }
 
+    /**
+     * Agrega la translacion en el eje Y en metros al transform3D global.
+     *
+     * Ejecuta el metodo mul del objeto Transform3D global pasando como
+     * parametro un Transform3D temporal.
+     *
+     * <code>
+     *  Transform3D tmp = new Transform3D();
+     *  tmp.setTranslation(new Vector3d(0, y, 0));
+     *  transform3D.mul(tmp);
+     * </code>
+     *
+     * @param y metros translacion en el eje y en metros. Accepta valores
+     * engativos.
+     *
+     * @return <code>this</code> instancia del mismo objeto Transform3DBuilder.
+     */
     public Transform3DBuilder movY(double y) {
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(0, y, 0));
@@ -29,6 +67,23 @@ public class Transform3DBuilder {
         return this;
     }
 
+    /**
+     * Agrega la translacion en el eje Z en metros al transform3D global.
+     *
+     * Ejecuta el metodo mul del objeto Transform3D global pasando como
+     * parametro un Transform3D temporal.
+     *
+     * <code>
+     *  Transform3D tmp = new Transform3D();
+     *  tmp.setTranslation(new Vector3d(0, 0, z));
+     *  transform3D.mul(tmp);
+     * </code>
+     *
+     * @param z metros translacion en el eje z en metros. Accepta valores
+     * engativos.
+     *
+     * @return <code>this</code> instancia del mismo objeto Transform3DBuilder.
+     */
     public Transform3DBuilder movZ(double z) {
         Transform3D tmp = new Transform3D();
         tmp.setTranslation(new Vector3d(0, 0, z));
