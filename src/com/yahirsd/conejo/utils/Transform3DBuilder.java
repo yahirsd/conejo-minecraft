@@ -96,7 +96,7 @@ public class Transform3DBuilder {
      * La rotacion se pasa en grados, rotX de Trasnform3D requiere los grados en
      * radianes asi que internamente se hace una conversion.
      *
-     * Ejecuta el metodo mul del opjeto Transform3D global pasando como
+     * Ejecuta el metodo mul del objeto Transform3D global pasando como
      * parametro un Transform3D temporal.
      *
      * <code>
@@ -121,7 +121,7 @@ public class Transform3DBuilder {
      * La rotacion se pasa en grados, rotY de Trasnform3D requiere los grados en
      * radianes asi que internamente se hace una conversion.
      *
-     * Ejecuta el metodo mul del opjeto Transform3D global pasando como
+     * Ejecuta el metodo mul del objeto Transform3D global pasando como
      * parametro un Transform3D temporal.
      *
      * <code>
@@ -146,7 +146,7 @@ public class Transform3DBuilder {
      * La rotacion se pasa en grados, rotZ de Trasnform3D requiere los grados en
      * radianes asi que internamente se hace una conversion.
      *
-     * Ejecuta el metodo mul del opjeto Transform3D global pasando como
+     * Ejecuta el metodo mul del objeto Transform3D global pasando como
      * parametro un Transform3D temporal.
      *
      * <code>
