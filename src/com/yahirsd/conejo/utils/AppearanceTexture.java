@@ -9,7 +9,6 @@ import com.sun.j3d.utils.image.TextureLoader;
 import java.awt.Container;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Texture;
-import javax.media.j3d.TransformGroup;
 
 /**
  *
@@ -19,15 +18,19 @@ final public class AppearanceTexture {
 
     /**
      * Suma binaria de GENERATE_NORMALS y GENERATE_TEXTURE_COORDS.
+     *
      * Especifica que las normales se generan junto con las posiciones y
      * Especifica que las coordenadas de textura se generan junto con las
      * posiciones.
-     * <code>Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS</code>
+     *
+     * <code>
+     * Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS
+     * </code>
      */
     public static int FLAGS = Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS;
 
     /**
-     * devulbe una apariencia con textura de imagen.
+     * Devulve una apariencia con textura de imagen.
      *
      * @param url url de la imagen.
      *
