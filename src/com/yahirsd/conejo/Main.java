@@ -6,6 +6,7 @@ package com.yahirsd.conejo;
 
 import com.yahirsd.conejo.view.WindowMain;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -19,15 +20,14 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         System.setProperty("sun.awt.noerasebackground", "true");
-        WindowMain wm = new WindowMain();
-        JFrame jframe = new JFrame("Conejo");
-        jframe.add(wm);
-        jframe.setSize(700, 700);
-        jframe.setVisible(true);
-        jframe.setLocationRelativeTo(null);
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SwingUtilities.invokeLater(() -> {
+            WindowMain wm = new WindowMain();
+            JFrame jframe = new JFrame("Conejo");
+            jframe.add(wm);
+            jframe.setSize(700, 700);
+            jframe.setVisible(true);
+            jframe.setLocationRelativeTo(null);
+            jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        });
     }
-    
-   
-    
 }
