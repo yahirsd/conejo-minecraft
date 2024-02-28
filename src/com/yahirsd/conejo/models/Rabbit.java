@@ -259,7 +259,7 @@ public class Rabbit {
                     Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 while (flagMovWalk) {
-                    for (int i = 0; i < 20; i++) {
+                    for (int i = 0; i < 10; i++) {
                         t3dMovHead.movY(0.01);
                         headTG.setTransform(t3dMovHead.getTransform3D());
                         try {
@@ -269,7 +269,7 @@ public class Rabbit {
                         }
                     }
 
-                    for (int i = 0; i < 20; i++) {
+                    for (int i = 0; i < 10; i++) {
                         t3dMovHead.movY(-0.01);
                         headTG.setTransform(t3dMovHead.getTransform3D());
                         try {
