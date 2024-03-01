@@ -154,12 +154,15 @@ public class Rabbit {
         
         Box armLeft = new Box(0.1f, 0.6f, 0.2f, AppearanceTexture.FLAGS, AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/arm_front.png"));
         armLeft.getShape(5).setAppearance(AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/ear_side.png"));
+        
         Transform3D t3dArmLeft = new Transform3DBuilder()
                 .movY(-0.6)
                 .getTransform3D();
+        
         tmpArmLeftTG.setTransform(t3dArmLeft);
         tmpArmLeftTG.addChild(armLeft);
         armLeftTG.addChild(tmpArmLeftTG);
+        
         return armLeftTG;
     }
 
@@ -172,37 +175,51 @@ public class Rabbit {
         
         Box armRight = new Box(0.1f, 0.6f, 0.2f, AppearanceTexture.FLAGS, AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/arm_front.png"));
         armRight.getShape(5).setAppearance(AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/ear_side.png"));
+        
         Transform3D t3dArmRight = new Transform3DBuilder()
                 .movY(-0.6)
                 .getTransform3D();
+        
         tmpArmRightTG.setTransform(t3dArmRight);
         tmpArmRightTG.addChild(armRight);
         armRightTG.addChild(tmpArmRightTG);
+        
         return armRightTG;
     }
 
     private TransformGroup getFootLeft() {
-
+        
+        final TransformGroup tmpFootLeftTG = new TransformGroup();
+        
+        t3dMovFootLeft.movY(-2).movX(-0.3);
+        footLeftTG.setTransform(t3dMovFootLeft.getTransform3D());
+        
         Box footLeft = new Box(0.2f, 0.2f, 0.2f, AppearanceTexture.FLAGS, AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/shoes.png"));
         Transform3D t3dFootLeft = new Transform3DBuilder()
-                .movX(-0.3)
-                .movY(-2.2)
+                .movY(-0.2)
                 .getTransform3D();
-        footLeftTG.setTransform(t3dFootLeft);
-        footLeftTG.addChild(footLeft);
-
+        tmpFootLeftTG.setTransform(t3dFootLeft);
+        tmpFootLeftTG.addChild(footLeft);
+        footLeftTG.addChild(tmpFootLeftTG);
+        
         return footLeftTG;
     }
 
     private TransformGroup getFootRight() {
 
+        final TransformGroup tmpFootRightTG = new TransformGroup();
+        
+        t3dMovFootRight.movY(-2).movX(0.3);
+        footRightTG.setTransform(t3dMovFootRight.getTransform3D());
+        
         Box footRight = new Box(0.2f, 0.2f, 0.2f, AppearanceTexture.FLAGS, AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/shoes.png"));
         Transform3D t3dFootRight = new Transform3DBuilder()
-                .movX(0.3)
-                .movY(-2.2)
+                .movY(-0.2)
                 .getTransform3D();
-        footRightTG.setTransform(t3dFootRight);
-        footRightTG.addChild(footRight);
+        tmpFootRightTG.setTransform(t3dFootRight);
+        tmpFootRightTG.addChild(footRight);
+        footRightTG.addChild(tmpFootRightTG);
+        
         return footRightTG;
     }
 
@@ -470,6 +487,119 @@ public class Rabbit {
             }
         });
 
+        Thread threadMovFootLeft = new Thread(()->{
+        
+            while(true){
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 while (flagMovWalk) {
+                     for (int i = 0; i < 30; i++) {
+                        t3dMovFootLeft.rotX(1.5);
+                        footLeftTG.setTransform(t3dMovFootLeft.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    for (int i = 0; i < 30; i++) {
+                        t3dMovFootLeft.rotX(-1.5);
+                        footLeftTG.setTransform(t3dMovFootLeft.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    if (!flagMovWalk) {
+                        continue;
+                    }
+                    
+                    for (int i = 0; i < 30; i++) {
+                        t3dMovFootLeft.rotX(-1.5);
+                        footLeftTG.setTransform(t3dMovFootLeft.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    for (int i = 0; i < 30; i++) {
+                        t3dMovFootLeft.rotX(1.5);
+                        footLeftTG.setTransform(t3dMovFootLeft.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                 }
+            }
+        });
+        
+        Thread threadMovFootRight = new Thread(()->{
+        
+            while(true){
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 while (flagMovWalk) {
+                     for (int i = 0; i < 30; i++) {
+                        t3dMovFootRight.rotX(-1.5);
+                        footRightTG.setTransform(t3dMovFootRight.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    for (int i = 0; i < 30; i++) {
+                        t3dMovFootRight.rotX(1.5);
+                        footRightTG.setTransform(t3dMovFootRight.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    if (!flagMovWalk) {
+                        continue;
+                    }
+                    
+                    for (int i = 0; i < 30; i++) {
+                        t3dMovFootRight.rotX(1.5);
+                        footRightTG.setTransform(t3dMovFootRight.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    for (int i = 0; i < 30; i++) {
+                        t3dMovFootRight.rotX(-1.5);
+                        footRightTG.setTransform(t3dMovFootRight.getTransform3D());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Rabbit.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                 }
+            }
+        });
+        threadMovFootRight.start();
+        threadMovFootLeft.start();
         threadMovArmLeft.start();
         threadMovArmRight.start();
         threadMovHead.start();
