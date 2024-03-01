@@ -38,7 +38,7 @@ public final class WindowMain extends JPanel {
 
         SimpleUniverse universe = new SimpleUniverse(canvas);
 
-        Vector3f pointOfViewVector3f = new Vector3f(0f, 0f, 10f);
+        Vector3f pointOfViewVector3f = new Vector3f(0f, 0f, 15f);
         Transform3D pointOfViewTransform = new Transform3D();
         pointOfViewTransform.setTranslation(pointOfViewVector3f);
         universe.getViewingPlatform().getViewPlatformTransform().setTransform(pointOfViewTransform);

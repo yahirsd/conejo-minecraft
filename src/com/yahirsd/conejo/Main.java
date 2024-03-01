@@ -24,9 +24,9 @@ public class Main {
             WindowMain wm = new WindowMain();
             JFrame jframe = new JFrame("Conejo");
             jframe.add(wm);
-            jframe.setSize(700, 700);
+            jframe.setSize(1080, 720);
+            jframe.setExtendedState(JFrame.MAXIMIZED_BOTH);
             jframe.setVisible(true);
-            jframe.setLocationRelativeTo(null);
             jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         });
     }
