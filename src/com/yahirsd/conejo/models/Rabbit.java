@@ -7,11 +7,18 @@ package com.yahirsd.conejo.models;
 import com.sun.j3d.utils.geometry.Box;
 import com.yahirsd.conejo.utils.AppearanceTexture;
 import com.yahirsd.conejo.utils.Transform3DBuilder;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -39,6 +46,8 @@ public class Rabbit {
 
     private boolean flagMovWalk = false;
     private boolean flagSpecialMov = false;
+
+    private Thread thradTpose;
 
     /**
      * constructor para la clase Head.
@@ -138,8 +147,8 @@ public class Rabbit {
         Box trunk = new Box(0.6f, 0.6f, 0.6f, AppearanceTexture.FLAGS, AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/back.png"));
         trunk.getShape(0).setAppearance(AppearanceTexture.getAppearance("src/com/yahirsd/conejo/img/front.png"));
 
-        Transform3D t3dTrunk = new Transform3DBuilder().movY(-1.4).getTransform3D();
-        trunkTG.setTransform(t3dTrunk);
+        t3dMovTrunk.movY(-1.4).getTransform3D();
+        trunkTG.setTransform(t3dMovTrunk.getTransform3D());
         trunkTG.addChild(trunk);
 
         return trunkTG;
@@ -445,7 +454,7 @@ public class Rabbit {
                     for (int i = 0; i < 15; i++) {
                         t3dMovFootRight.rotX(3);
                         footRightTG.setTransform(t3dMovFootRight.getTransform3D());
-                       sleep();
+                        sleep();
                     }
 
                     if (!flagMovWalk) {
@@ -465,6 +474,47 @@ public class Rabbit {
                     }
                 }
             }
+        });
+
+        thradTpose = new Thread(() -> {
+            try {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/com/yahirsd/conejo/sound/hasta-la-proxima.wav").getAbsoluteFile());
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+                System.out.println("Error al reproducir el sonido.");
+            }
+
+            for (int i = 0; i < 90; i++) {
+                t3dMovArmRight.rotZ(1);
+                armRightTG.setTransform(t3dMovArmRight.getTransform3D());
+                sleep();
+                t3ddMovArmLeft.rotZ(-1);
+                armLeftTG.setTransform(t3ddMovArmLeft.getTransform3D());
+                sleep();
+            }
+            for (int i = 0; i < 250; i++) {
+                t3dMovHead.movY(0.05);
+                headTG.setTransform(t3dMovHead.getTransform3D());
+
+                t3dMovTrunk.movY(0.05);
+                trunkTG.setTransform(t3dMovTrunk.getTransform3D());
+
+                t3dMovFootLeft.movY(0.05);
+                footLeftTG.setTransform(t3dMovFootLeft.getTransform3D());
+
+                t3ddMovArmLeft.movX(-0.05);
+                armLeftTG.setTransform(t3ddMovArmLeft.getTransform3D());
+
+                t3dMovArmRight.movX(0.05);
+                armRightTG.setTransform(t3dMovArmRight.getTransform3D());
+
+                t3dMovFootRight.movY(0.05);
+                footRightTG.setTransform(t3dMovFootRight.getTransform3D());
+                sleep();
+            }
+            System.exit(0);
         });
         threadMovFootRight.start();
         threadMovFootLeft.start();
@@ -489,6 +539,10 @@ public class Rabbit {
 
     public void stopWalk() {
         flagMovWalk = false;
+    }
+
+    public void tPose() {
+        thradTpose.start();
     }
 
     public BranchGroup getRabbitBG() {

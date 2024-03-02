@@ -88,6 +88,11 @@ public final class WindowMain extends JPanel {
                     rabbit.stopWalk();
                     System.out.println("Tecla presionada en el panel: " + KeyEvent.getKeyText(keyCode));
                     break;
+
+                case KeyEvent.VK_T:
+                    rabbit.tPose();
+                    System.out.println("Tecla presionada en el panel: " + KeyEvent.getKeyText(keyCode));
+                    break;
                 default:
             }
         }
